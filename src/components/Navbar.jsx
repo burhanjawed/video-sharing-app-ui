@@ -39,6 +39,8 @@ const Search = styled.div`
 const Input = styled.input`
   border: none;
   background: transparent;
+  outline: none;
+  color: ${({ theme }) => theme.text};
 `;
 
 const Login = styled.div``;

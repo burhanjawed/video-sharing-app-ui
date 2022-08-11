@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import { Menu, Navbar } from '../components';
 import { darkTheme, lightTheme } from '../utils/Theme';
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
+import { Home, Video } from '../pages';
 
 // Styles
 const Container = styled.div`
@@ -13,7 +15,10 @@ const Main = styled.div`
   background-color: ${({ theme }) => theme.bg};
   transition: 0.5s;
 `;
-const Wrapper = styled.div``;
+
+const Wrapper = styled.div`
+  padding: 22px 96px;
+`;
 
 function App() {
   const [themeMode, setThemeMode] = useState(
@@ -30,13 +35,25 @@ function App() {
   return (
     <ThemeProvider theme={themeMode === 'lightTheme' ? lightTheme : darkTheme}>
       <Container>
-        {/* Sidebar  */}
-        <Menu themeMode={themeMode} setThemeMode={setThemeMode} />
-        {/* Main section */}
-        <Main>
-          <Navbar />
-          <Wrapper>Video Cards</Wrapper>
-        </Main>
+        <BrowserRouter>
+          {/* Sidebar  */}
+          <Menu themeMode={themeMode} setThemeMode={setThemeMode} />
+          {/* Main section */}
+          <Main>
+            <Navbar />
+            <Wrapper>
+              {/* Routes  */}
+              <Routes>
+                <Route path='/'>
+                  <Route index element={<Home />} />
+                  <Route path='video'>
+                    <Route path=':id' element={<Video />} />
+                  </Route>
+                </Route>
+              </Routes>
+            </Wrapper>
+          </Main>
+        </BrowserRouter>
       </Container>
     </ThemeProvider>
   );

@@ -21,17 +21,19 @@ import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined
 // Styles
 const Container = styled.div`
   flex: 1;
-  background-color: var(--sidebar-background-color);
+  background-color: ${({ theme }) => theme.bgLighter};
   height: 100vh;
-  color: var(--white-color);
+  color: ${({ theme }) => theme.text};
   font-size: 14px;
   position: sticky;
   top: 0;
+  transition: 0.5s;
 `;
 
 const Wrapper = styled.div`
   padding: 18px 26px;
 `;
+
 const Logo = styled.div`
   display: flex;
   align-items: center;
@@ -39,9 +41,11 @@ const Logo = styled.div`
   font-weight: bold;
   margin-bottom: 25px;
 `;
+
 const Img = styled.img`
   height: 25px;
 `;
+
 const Item = styled.div`
   display: flex;
   align-items: center;
@@ -49,11 +53,14 @@ const Item = styled.div`
   cursor: pointer;
   padding: 7.5px 0;
 `;
+
 const Hr = styled.hr`
   margin: 15px 0;
-  border: 0.5px solid var(--divider-color);
+  border: 0.5px solid ${({ theme }) => theme.soft};
 `;
+
 const Login = styled.div``;
+
 const Button = styled.button`
   text-transform: uppercase;
   padding: 5px 15px;
@@ -69,7 +76,15 @@ const Button = styled.button`
   gap: 5px;
 `;
 
-const Menu = () => {
+const Title = styled.h2`
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: #aaaaaa;
+  margin-bottom: 20px;
+`;
+
+const Menu = ({ themeMode, setThemeMode }) => {
   return (
     <Container>
       <Wrapper>
@@ -103,6 +118,7 @@ const Menu = () => {
           </Button>
         </Login>
         <Hr />
+        <Title>Best of LamaTube</Title>
         <Item>
           <LibraryMusicOutlinedIcon />
           Music
@@ -140,9 +156,13 @@ const Menu = () => {
           <HelpOutlineOutlinedIcon />
           Help
         </Item>
-        <Item>
+        <Item
+          onClick={() =>
+            setThemeMode(themeMode === 'darkTheme' ? 'lightTheme' : 'darkTheme')
+          }
+        >
           <SettingsBrightnessOutlinedIcon />
-          Light Mode
+          {themeMode === 'darkTheme' ? 'Light Mode' : 'Dark Mode'}
         </Item>
       </Wrapper>
     </Container>

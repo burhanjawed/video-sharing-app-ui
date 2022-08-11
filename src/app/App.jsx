@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { Menu, Navbar } from '../components';
 
+// Styles
 const Container = styled.div`
   display: flex;
 `;
@@ -13,7 +14,9 @@ const Wrapper = styled.div``;
 function App() {
   return (
     <Container>
+      {/* Sidebar  */}
       <Menu />
+      {/* Main section */}
       <Main>
         <Navbar />
         <Wrapper>Video Cards</Wrapper>

@@ -121,9 +121,11 @@ const Menu = ({ themeMode, setThemeMode }) => {
         <Hr />
         <Login>
           Sign in to like videos, comment, and subscribe.
-          <Button>
-            <AccountCircleOutlinedIcon /> Sign In
-          </Button>
+          <Link to='/login' style={{ textDecoration: 'none' }}>
+            <Button>
+              <AccountCircleOutlinedIcon /> Sign In
+            </Button>
+          </Link>
         </Login>
         <Hr />
         <Title>Best of LamaTube</Title>

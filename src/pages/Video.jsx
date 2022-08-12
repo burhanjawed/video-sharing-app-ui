@@ -4,7 +4,7 @@ import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
 import ThumbDownOutlinedIcon from '@mui/icons-material/ThumbDownOutlined';
 import ReplyOutlinedIcon from '@mui/icons-material/ReplyOutlined';
 import AddTaskOutlinedIcon from '@mui/icons-material/AddTaskOutlined';
-import { Comments } from '../components';
+import { Card, Comments } from '../components';
 
 // Styles
 const Container = styled.div`
@@ -160,7 +160,18 @@ const Video = () => {
         <Hr />
         <Comments />
       </Content>
-      <Recommendation>Recommendations</Recommendation>
+      <Recommendation>
+        <Card type='sm' />
+        <Card type='sm' />
+        <Card type='sm' />
+        <Card type='sm' />
+        <Card type='sm' />
+        <Card type='sm' />
+        <Card type='sm' />
+        <Card type='sm' />
+        <Card type='sm' />
+        <Card type='sm' />
+      </Recommendation>
     </Container>
   );
 };

@@ -4,28 +4,34 @@ import styled from 'styled-components';
 
 // Styles
 const Container = styled.div`
-  width: 360px;
-  margin-bottom: 45px;
+  width: ${(props) => props.type !== 'sm' && '360px'};
+  margin-bottom: ${(props) => (props.type === 'sm' ? '10px' : '45px')};
   cursor: pointer;
+  display: ${(props) => props.type === 'sm' && 'flex'};
+  gap: 10px;
 `;
 
 const Image = styled.img`
   width: 100%;
-  height: 202px;
-  background-color: #999;
+  height: ${(props) => (props.type === 'sm' ? '120px' : '202px')};
+  background-color: var(--background-color);
+  object-fit: cover;
+  flex: 1;
 `;
 
 const Details = styled.div`
   display: flex;
-  margin-top: 16px;
+  margin-top: ${(props) => (props.type === 'sm' ? '0px' : '16px')};
   gap: 12px;
+  flex: 1;
 `;
 
 const ChannelImage = styled.img`
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  background-color: #999;
+  background-color: var(--background-color);
+  display: ${(props) => props.type === 'sm' && 'none'};
 `;
 
 const Texts = styled.div``;
@@ -47,15 +53,21 @@ const Info = styled.div`
   color: ${({ theme }) => theme.textSoft};
 `;
 
-const Card = () => {
+const Card = ({ type }) => {
   return (
     <Link to='/video/test' style={{ textDecoration: 'none' }}>
-      <Container>
+      <Container type={type}>
         {/* Video image  */}
-        <Image src='https://i9.ytimg.com/vi_webp/k3Vfj-e1Ma4/mqdefault.webp?v=6277c159&sqp=CIjm8JUG&rs=AOn4CLDeKmf_vlMC1q9RBEZu-XQApzm6sA' />
+        <Image
+          src='https://i9.ytimg.com/vi_webp/k3Vfj-e1Ma4/mqdefault.webp?v=6277c159&sqp=CIjm8JUG&rs=AOn4CLDeKmf_vlMC1q9RBEZu-XQApzm6sA'
+          type={type}
+        />
         {/* Video details  */}
-        <Details>
-          <ChannelImage src='https://yt3.ggpht.com/yti/APfAmoE-Q0ZLJ4vk3vqmV4Kwp0sbrjxLyB8Q4ZgNsiRH=s88-c-k-c0x00ffffff-no-rj-mo' />
+        <Details type={type}>
+          <ChannelImage
+            src='https://yt3.ggpht.com/yti/APfAmoE-Q0ZLJ4vk3vqmV4Kwp0sbrjxLyB8Q4ZgNsiRH=s88-c-k-c0x00ffffff-no-rj-mo'
+            type={type}
+          />
           <Texts>
             <Title>Test Video</Title>
             <ChannelName>Lama Dev</ChannelName>

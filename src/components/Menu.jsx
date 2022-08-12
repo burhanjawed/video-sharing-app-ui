@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { images } from '../constants';
+import { Link } from 'react-router-dom';
 import HomeIcon from '@mui/icons-material/Home';
 import ExploreOutlinedIcon from '@mui/icons-material/ExploreOutlined';
 import SubscriptionsOutlinedIcon from '@mui/icons-material/SubscriptionsOutlined';
@@ -89,10 +90,12 @@ const Menu = ({ themeMode, setThemeMode }) => {
     <Container>
       <Wrapper>
         {/* Logo */}
-        <Logo>
-          <Img src={images.logo} />
-          LamaTube
-        </Logo>
+        <Link to='/' style={{ textDecoration: 'none', color: 'inherit' }}>
+          <Logo>
+            <Img src={images.logo} />
+            LamaTube
+          </Logo>
+        </Link>
         {/* Menu items  */}
         <Item>
           <HomeIcon /> Home
